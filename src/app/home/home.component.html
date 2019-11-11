@@ -1,0 +1,89 @@
+<div class="createnewflower">
+	<p> WELCOME !!!</p>
+</div>
+<!-- <div>
+	<form class="example-form">
+		<input type="file" (change)="onSelectFile($event)">
+		 <button mat-raised-button >Upload</button> 
+ </form>
+  <img src={{selectedFile}}> 
+</div>
+<div>
+	message: {{message}} 
+
+	<input type="number" [(ngModel)]="value">
+	<button [disabled]="disBtn" type="submit" (click)="activate()"> Save</button>
+	<button type="button" (click)="clear()"> clear</button>
+
+	<p>remaining:- {{remaining}} </p>
+
+	{{currancyValue | json}}
+</div> -->
+
+<div style="width: 500px; height: 500px">
+	<h1>Tic Tac Toe</h1>
+	<div class="row">
+		<div class="square" (click)="ticTacClick(1)">
+			<div class="content">
+				<h1>{{divContent[1]}}</h1>
+			</div>
+		</div>
+		<div class="square" (click)="ticTacClick(2)">
+			<div class="content">
+				<h1>{{divContent[2]}}</h1>
+			</div>
+		</div>
+		<div class="square" (click)="ticTacClick(3)">
+			<div class="content">
+				<h1>{{divContent[3]}}</h1>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="square" (click)="ticTacClick(4)">
+			<div class="content">
+				<h1>{{divContent[4]}}</h1>
+			</div>
+		</div>
+		<div class="square" (click)="ticTacClick(5)">
+			<div class="content">
+				<h1>{{divContent[5]}}</h1>
+			</div>
+		</div>
+		<div class="square" (click)="ticTacClick(6)">
+			<div class="content">
+				<h1>{{divContent[6]}}</h1>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="square" (click)="ticTacClick(7)">
+			<div class="content">
+				<h1>{{divContent[7]}}</h1>
+			</div>
+		</div>
+		<div class="square" (click)="ticTacClick(8)">
+			<div class="content">
+				<h1>{{divContent[8]}}</h1>
+			</div>
+		</div>
+		<div class="square" (click)="ticTacClick(9)">
+			<div class="content">
+				<h1>{{divContent[9]}}</h1>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div>
+	<p>{{message}}</p>
+
+	<button type="button" (click)="initializeBlock(null)"> Clear TicToe</button>
+	<!-- 
+	<button [disabled]="disBtn" type="button" (mouseover)="a(event)"> Save</button> -->
+	
+	<p>player 1: {{oddArray | json}}</p>
+	<p>player 2: {{evenArray | json}}</p>
+	<p>full game {{blockArray|json}}</p>
+</div>
