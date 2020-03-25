@@ -3,6 +3,39 @@
     <!-- Step 1  -->
     <div>
         <h2>Mortage Payment</h2>
+        <div class="col-md-6">
+            <label class="form-label p-4">Total Home Loan Amount:</label>
+            <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
+              <input matInput name="home-loan-amount" placeholder="Enter home loan amount" pattern="^[0-9.]*$" [(ngModel)]="home_loan_amount" #homeLoanAmount="ngModel">
+              <mat-error *ngIf="homeLoanAmount.hasError('pattern')">It should only contain numeric values!</mat-error>              
+            </mat-form-field>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label p-4">Annual Interest Rate:</label>
+            <mat-form-field class="full-width" floatLabel="never">
+                <span matSuffix>%</span>
+              <input matInput name="annual-IR" placeholder="Enter interest rate" pattern="^[0-9.]*$" [(ngModel)]="annual_IR" #annualIR="ngModel">
+              <mat-error *ngIf="annualIR.hasError('pattern')">It should only contain numeric values!</mat-error>              
+            </mat-form-field>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label p-4">Term of the Loan:</label>
+            <mat-form-field class="full-width" floatLabel="never">
+                <mat-select name="loan-term" placeholder="Select" [(ngModel)]="loan_terms" #termOfLoan="ngModel">
+                <mat-option *ngFor="let term of loanTerms" [value]="term">
+                  {{term}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <span matSuffix>years</span>
+        </div>
+        <div *ngIf="mortage_payment" class="col-md-6">
+            <label class="form-label p-2">Mortage payment is:</label>
+            <span matPrefix>$</span>
+            {{ mortage_payment }}
+        </div>
+        <button mat-flat-button type="submit" (click)="calculateMortagePayment()">Calculate</button>
     </div>
 
     <!-- Step 2  -->
