@@ -1,0 +1,71 @@
+<h1 style="text-align: center;">Property Risk Calculation</h1>
+<div class="container">
+    <!-- Step 1  -->
+    <div>
+        <h2>Mortage Payment</h2>
+    </div>
+
+    <!-- Step 2  -->
+    <div>
+        <h2>Capitalization Rate</h2>
+    </div>
+
+    <!-- Step 3 -->
+    <div>
+        <h2>Rent Cost Ratio</h2>
+    </div>
+
+    <!-- Step 4  -->
+    <div>
+        <h2>Gross Yield</h2>
+    </div>
+
+    <!-- Step 5  -->
+    <div>
+        <h2>Debt Service Ratio</h2>
+    </div>
+
+    <!-- Step 6  -->
+    <div>
+        <h2>Cash-On-Cash Return</h2>
+    </div>
+
+    <!-- Step 7  -->
+    <div>
+        <h2>The 50% Rule</h2>
+    </div>
+
+    <!-- Step 8  -->
+    <div>
+        <h2>After Repair Value (ARV)</h2>
+    </div>
+
+    <!-- Step 9  -->
+    <div>
+        <h2>70% of ARV Rule</h2>
+    </div>
+
+    <!-- Step 10  -->
+    <div>
+        <h2>Square Footage</h2>
+        <div class="col-md-6">
+            <label class="form-label p-4">Length</label>
+            <mat-form-field class="full-width" floatLabel="never">
+              <input matInput name="length" placeholder="Enter length" pattern="^[0-9.]*$" [(ngModel)]="square_feet_length" #length="ngModel">
+              <mat-error *ngIf="length.hasError('pattern')">Length should only contain numeric values!</mat-error>              
+            </mat-form-field>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label p-4">Width</label>
+            <mat-form-field class="full-width" floatLabel="never">
+              <input matInput name="width" placeholder="Enter width" pattern="^[0-9.]*$" [(ngModel)]="square_feet_width" #width="ngModel">
+              <mat-error *ngIf="width.hasError('pattern')">Width should only contain numeric values!</mat-error>              
+            </mat-form-field>
+        </div>
+        <div *ngIf="square_footage" class="col-md-6">
+            <label class="form-label p-2">Square Footage is:</label>
+            {{ square_footage }}
+        </div>
+        <button mat-flat-button type="submit" (click)="calculateSquareFootage()">Calculate</button>
+    </div>
+</div>
