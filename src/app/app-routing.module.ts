@@ -4,9 +4,8 @@ import { PropertyRiskScoreComponent } from './property-risk-score/property-risk-
 
 const routes: Routes = [
   { 
-    path: 'hackathon',
-    pathMatch: 'full',
-    component: PropertyRiskScoreComponent,
+    path: '',
+    component: PropertyRiskScoreComponent
   }
 ];
 
