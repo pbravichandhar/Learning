@@ -3,42 +3,35 @@
     <h2 class="heading text-center p-4 mb-3">Calibraint Hackathon</h2>
     <div class="menu-list">
 
-      <!-- Step 1  -->
-      <a [ngClass]="{'active': payment_calc_type==='Mortage'}" (click)="paymentCalc('Mortage')">Mortage Payment</a>
+            <!-- Step 1  -->
+            <a [class.active] = "payment_calc_type === 'Mortage'" [ngClass]="{'complete': mortage_payment}" (click)="paymentCalc('Mortage')">Mortage Payment</a>
+            <!-- Step 2  -->
+            <a  [class.active] = "payment_calc_type === 'Capitalization'" [ngClass]="{'complete': cap_rate}"(click)="paymentCalc('Capitalization')">Capitalization Rate</a>
 
-      <!-- Step 2  -->
-      <a [ngClass]="{'active': payment_calc_type==='Capitalization'}"
-        (click)="paymentCalc('Capitalization')">Capitalization Rate</a>
+            <!-- Step 3  -->
+            <a [class.active] = "payment_calc_type === 'RentcostRatio'" [ngClass]="{'complete': rent_cost_ratio}"(click)="paymentCalc('RentcostRatio')">Rent Cost Ratio</a>
 
-      <!-- Step 3  -->
-      <a [ngClass]="{'active': payment_calc_type==='RentcostRatio'}" (click)="paymentCalc('RentcostRatio')">Rent Cost
-        Ratio</a>
+            <!-- Step 4  -->
+            <a [class.active] = "payment_calc_type === 'GrossYield'" [ngClass]="{'complete':  gross_yield}"(click)="paymentCalc('GrossYield')">Gross Yield</a>
 
-      <!-- Step 4  -->
-      <a [ngClass]="{'active': payment_calc_type==='GrossYield'}" (click)="paymentCalc('GrossYield')">Gross Yield</a>
+            <!-- Step 5  -->
+            <a [class.active] = "payment_calc_type === 'ServiceRatio'" [ngClass]="{'complete': debt_service_ratio}"(click)="paymentCalc('ServiceRatio')">Debt Service Ratio</a>
 
-      <!-- Step 5  -->
-      <a [ngClass]="{'active': payment_calc_type==='ServiceRatio'}" (click)="paymentCalc('ServiceRatio')">Debt Service
-        Ratio</a>
+            <!-- Step 6  -->
+            <a [class.active] = "payment_calc_type === 'CashOnCash'" [ngClass]="{'complete': cash_on_cash}"(click)="paymentCalc('CashOnCash')">Cash-On-Cash Return</a>
 
-      <!-- Step 6  -->
-      <a [ngClass]="{'active': payment_calc_type==='CashOnCash'}" (click)="paymentCalc('CashOnCash')">Cash-On-Cash
-        Return</a>
+            <!-- Step 7  -->
+            <a [class.active] = "payment_calc_type === 'fiftyRule'" [ngClass]="{'complete': isBuyProperty }"(click)="paymentCalc('fiftyRule')">The 50% Rule</a>
 
-      <!-- Step 7  -->
-      <a [ngClass]="{'active': payment_calc_type==='fiftyRule'}" (click)="paymentCalc('fiftyRule')">The 50% Rule</a>
+            <!-- Step 8  -->
+            <a [class.active] = "payment_calc_type === 'ARVRate'" [ngClass]="{'complete':  after_repair_value}" (click)="paymentCalc('ARVRate')">After Repair Value (ARV)</a>
 
-      <!-- Step 8  -->
-      <a [ngClass]="{'active': payment_calc_type==='ARVRate'}" (click)="paymentCalc('ARVRate')">After Repair Value
-        (ARV)</a>
+            <!-- Step 9  -->
+            <a [class.active] = "payment_calc_type === 'ARV'" [ngClass]="{'complete': arv_percent_value}" (click)="paymentCalc('ARV')">70% of ARV Rule</a>
 
-      <!-- Step 9  -->
-      <a [ngClass]="{'active': payment_calc_type==='ARV'}" (click)="paymentCalc('ARV')">70% of ARV Rule</a>
-
-      <!-- Step 10  -->
-      <a [ngClass]="{'active': payment_calc_type==='Square_footage'}" (click)="paymentCalc('Square_footage')">Square
-        Footage</a>
-    </div>
+            <!-- Step 10  -->
+            <a [class.active] = "payment_calc_type === 'Square_footage'" [ngClass]="{'complete': square_footage}" (click)="paymentCalc('Square_footage')">Square Footage</a>
+        </div>
   </div>
   <div class="flex-1 dashboard">
     <div class="header-panel">
@@ -420,27 +413,28 @@
           <div class="col-md-6">
             <label>Purchased Price</label>
             <mat-form-field class="full-width" floatLabel="never">
-              <input matInput name="purchase" placeholder="Enter Purchased price" pattern="^[0-9.]*$"
-                [(ngModel)]="purchase_price" #purchase="ngModel">
+              <span matPrefix>$</span>
+              <input matInput name="purchase" placeholder="Enter Purchased price" pattern="^[0-9.]*$" [(ngModel)]="purchase_price" #purchase="ngModel">
               <mat-error *ngIf="purchase.hasError('pattern')">Purchased Price should only contain numeric values!
-              </mat-error>
+              </mat-error>              
             </mat-form-field>
           </div>
           <div class="col-md-6">
             <label>Renovation Price</label>
             <mat-form-field class="full-width" floatLabel="never">
-              <input matInput name="renovation" placeholder="Enter Renovation price" pattern="^[0-9.]*$"
-                [(ngModel)]="renovation_price" #renovation="ngModel">
+              <span matPrefix>$</span>
+              <input matInput name="renovation" placeholder="Enter Renovation price" pattern="^[0-9.]*$" [(ngModel)]="renovation_price" #renovation="ngModel">
               <mat-error *ngIf="renovation.hasError('pattern')">Renovation Price should only contain numeric values!
-              </mat-error>
+              </mat-error>              
             </mat-form-field>
           </div>
           <div class="col-md-6">
             <label>Repair Costs</label>
             <mat-form-field class="full-width" floatLabel="never">
-              <input matInput name="repair" placeholder="Enter Repair costs" pattern="^[0-9.]*$"
-                [(ngModel)]="repair_costs" #repair="ngModel">
-              <mat-error *ngIf="repair.hasError('pattern')">Repair Costs should only contain numeric values!</mat-error>
+              <span matPrefix>$</span>
+              <input matInput name="repair" placeholder="Enter Repair costs" pattern="^[0-9.]*$" [(ngModel)]="repair_costs" #repair="ngModel">
+              <mat-error *ngIf="repair.hasError('pattern')">Repair Costs should only contain numeric values!
+              </mat-error>              
             </mat-form-field>
           </div>
         </div>
