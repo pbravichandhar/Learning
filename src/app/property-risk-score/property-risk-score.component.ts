@@ -45,6 +45,15 @@ export class PropertyRiskScoreComponent implements OnInit {
   fees_paid: number;
   cash_on_cash: number;
 
+  total_expense: number;
+  actual_expense: number;
+  total_income: number;
+  property_management: number;
+  tax: number;
+  insurance: number;
+  maintenance: number;
+  buyProperty: boolean;
+
   property_total_price: number;
   annual_rent_of_property: number;
   rent_cost_ratio: number;
@@ -92,6 +101,12 @@ export class PropertyRiskScoreComponent implements OnInit {
 
   calculateDebtServiceRatio(): void {
     this.debt_service_ratio = (this.dsr_gross_profit - this.dsr_maintenance_amount) / this.dsr_interest_expense;
+  }
+
+  calculateTotalExpense(): void {
+    this.actual_expense  = (+this.property_management + +this.tax + +this.insurance + +this.maintenance);
+    this.total_expense = +(this.total_income * (50/100));
+    this.buyProperty = (this.actual_expense > this.total_expense) ? false : true;
   }
 
   calculateRentCostRatio(): void {
