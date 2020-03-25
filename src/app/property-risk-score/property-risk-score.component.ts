@@ -62,6 +62,7 @@ export class PropertyRiskScoreComponent implements OnInit {
   arv_purchase_price: number;
   arv_renovation_price: number;
   after_repair_value: number;
+  isBuyProperty = false;
 
   payment_calc_type = 'Mortage';
   propertyResult: string;
