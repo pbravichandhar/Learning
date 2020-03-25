@@ -53,6 +53,7 @@ export class PropertyRiskScoreComponent implements OnInit {
   arv_renovation_price: number;
   after_repair_value: number;
 
+  payment_calc_type = 'Mortage';
   constructor() { }
 
   ngOnInit(): void {
@@ -101,4 +102,7 @@ export class PropertyRiskScoreComponent implements OnInit {
     this.after_repair_value = (+this.arv_purchase_price +  +this.arv_renovation_price);
   }
 
+  paymentCalc(value) {
+    this.payment_calc_type = value;
+  }
 }
