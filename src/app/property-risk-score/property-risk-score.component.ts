@@ -45,6 +45,10 @@ export class PropertyRiskScoreComponent implements OnInit {
   fees_paid: number;
   cash_on_cash: number;
 
+  property_total_price: number;
+  annual_rent_of_property: number;
+  rent_cost_ratio: number;
+  
   arv_purchase_price: number;
   arv_renovation_price: number;
   after_repair_value: number;
@@ -69,7 +73,7 @@ export class PropertyRiskScoreComponent implements OnInit {
 
   calculateCapRate(): void {
     this.NOI = (+this.rental_income + +this.other_income) - (+this.vacancy_loss + +this.other_expense_loss);
-    this.cap_rate = (this.NOI / this.present_market_value) * 100;
+    this.cap_rate = +((this.NOI / this.present_market_value) * 100).toFixed(2);
   }
 
   calculateARVRate(): void {
@@ -78,7 +82,7 @@ export class PropertyRiskScoreComponent implements OnInit {
   }
 
   calculateCashOnCashRate(): void {
-    this.cash_on_cash = (this.annual_rent - this.mortgage_payment) / (+this.down_payment + +this.fees_paid) * 100;
+    this.cash_on_cash = +((this.annual_rent - this.mortgage_payment) / (+this.down_payment + +this.fees_paid) * 100).toFixed(2);
   }
 
   calculateGrossYield(): void {
@@ -87,6 +91,10 @@ export class PropertyRiskScoreComponent implements OnInit {
 
   calculateDebtServiceRatio(): void {
     this.debt_service_ratio = (this.dsr_gross_profit - this.dsr_maintenance_amount) / this.dsr_interest_expense;
+  }
+
+  calculateRentCostRatio(): void {
+    this.rent_cost_ratio = +(this.property_total_price / this.annual_rent_of_property).toFixed(2);
   }
 
   calculateAfterRepairValue(): void {
