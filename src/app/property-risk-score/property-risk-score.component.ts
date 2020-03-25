@@ -9,12 +9,14 @@ export class PropertyRiskScoreComponent implements OnInit {
   square_feet_length: number;
   square_feet_width: number;
   square_footage: number;
+
   home_loan_amount: number;
   annual_IR: number;
   mortage_payment: number;
   loan_terms: number;
   interest_rate: number;
   loanTerms = ['5', '10', '15', '20', '30', '40', '50'];
+
   gross_yield_annual_income: number;
   gross_yield_purchase_price: number;
   gross_yield: number;
@@ -41,6 +43,15 @@ export class PropertyRiskScoreComponent implements OnInit {
   down_payment: number;
   fees_paid: number;
   cash_on_cash: number;
+
+  total_expense: number;
+  actual_expense: number;
+  total_income: number;
+  property_management: number;
+  tax: number;
+  insurance: number;
+  maintenance: number;
+  buyProperty: boolean;
 
   constructor() { }
 
@@ -80,6 +91,12 @@ export class PropertyRiskScoreComponent implements OnInit {
 
   calculateDebtServiceRatio(): void {
     this.debt_service_ratio = (this.dsr_gross_profit - this.dsr_maintenance_amount) / this.dsr_interest_expense;
+  }
+
+  calculateTotalExpense(): void {
+    this.actual_expense  = (+this.property_management + +this.tax + +this.insurance + +this.maintenance);
+    this.total_expense = +(this.total_income * (50/100));
+    this.buyProperty = (this.actual_expense > this.total_expense) ? false : true;
   }
 
 }
