@@ -70,7 +70,28 @@
       <div class="calculation">
         <h3 class="heading mb-4">Gross Yield</h3>
         <div class="row">
-          <!-- step 4 calculation summary here -->
+          <div class="col-md-6">
+            <label>Annual income</label>
+            <mat-form-field class="full-width" floatLabel="never">
+              <input matInput name="annualIncome" placeholder="Enter annual income" pattern="^[0-9.]*$" [(ngModel)]="gross_yield_annual_income" #annualIncome="ngModel">
+              <mat-error *ngIf="annualIncome.hasError('pattern')">Annual income should only contain numeric values!</mat-error>              
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+              <label>Purchase price</label>
+              <mat-form-field class="full-width" floatLabel="never">
+                <input matInput name="purchasePrice" placeholder="Enter purchase price" pattern="^[0-9.]*$" [(ngModel)]="gross_yield_purchase_price" #purchasePrice="ngModel">
+                <mat-error *ngIf="purchasePrice.hasError('pattern')">Purchase price should only contain numeric values!</mat-error>              
+              </mat-form-field>
+          </div>
+          <div *ngIf="gross_yield" class="col-md-12">
+            <p class="subtitle">Gross Yield is: <b>{{ gross_yield }} %</b></p>
+          </div>
+        </div>
+        <div class="text-right">
+          <button mat-raised-button color="primary" type="submit" class="mt-3" (click)="calculateGrossYield()">
+            Calculate
+          </button>
         </div>
       </div>
 
@@ -78,7 +99,38 @@
       <div class="calculation">
         <h3 class="heading mb-4">Debt Service Ratio</h3>
         <div class="row">
-          <!-- step 5 calculation summary here -->
+          <div class="col-md-6">
+            <label>Gross profit</label>
+            <mat-form-field class="full-width" floatLabel="never">
+              <input matInput name="grossProfit" placeholder="Enter gross profit" pattern="^[0-9.]*$" [(ngModel)]="dsr_gross_profit" #grossProfit="ngModel">
+              <mat-error *ngIf="grossProfit.hasError('pattern')">Gross profit should only contain numeric values!</mat-error>              
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+              <label>Maintenance amount</label>
+              <mat-form-field class="full-width" floatLabel="never">
+                <input matInput name="maintenanceAmount" placeholder="Enter maintenance amount" pattern="^[0-9.]*$" [(ngModel)]="dsr_maintenance_amount" #maintenanceAmount="ngModel">
+                <mat-error *ngIf="maintenanceAmount.hasError('pattern')">Maintenance amount should only contain numeric values!</mat-error>              
+              </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Interest expense</label>
+            <mat-form-field class="full-width" floatLabel="never">
+              <input matInput name="interestExpense" placeholder="Enter interest expense" pattern="^[0-9.]*$" [(ngModel)]="dsr_interest_expense" #interestExpense="ngModel">
+              <mat-error *ngIf="interestExpense.hasError('pattern')">Interest expense should only contain numeric values!</mat-error>              
+            </mat-form-field>
+          </div>
+          <div class="col-md-6"></div>
+          <div *ngIf="debt_service_ratio" class="col-md-12">
+            <p class="subtitle">Debt Service Ratio is: <b>{{ debt_service_ratio }}</b></p>
+          </div>
+        </div>
+        <div class="text-right">
+          <button mat-raised-button color="primary" type="submit" class="mt-3" (click)="calculateDebtServiceRatio()">
+            Calculate
+          </button>
         </div>
       </div>
 
