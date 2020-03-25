@@ -1,4 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* ==========================================================================
+   Settings
+    - Global variables, config switches, brand colors, etc
+   ========================================================================== */
+@import "assets/styles/settings/colors";
+@import "assets/styles/settings/fonts";
+@import "assets/styles/settings/variables";
+
+/* ==========================================================================
+   Hackathon Angular Material Theme
+   ========================================================================== */
+@import "assets/styles/material/Hackathon-material";
+
+/* ==========================================================================
+   Tools
+    - Globally-available tools, public mixins, helper functions
+   ========================================================================== */
+@import "assets/styles/tools/mixins";
+@import "assets/styles/tools/utilities";
