@@ -78,7 +78,15 @@ b {
   border-radius: 5px;
   box-shadow: 3px 5px 10px 0 rgba(0, 120, 231, 0.05);
   border: solid 1px rgba(0, 120, 231, 0.2);
-  background-color: #00b2ff1f;
+  background-color: rgba(0, 178, 255, 0.122);
   padding: 16px 24px;
   border-left: 4px solid #00b2ff;
+}
+
+.green {
+  color: #7ed321;
+}
+
+.red {
+  color: #d0021b;
 }
