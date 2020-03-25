@@ -360,17 +360,17 @@
               </mat-error>
             </mat-form-field>
           </div>
-          <div *ngIf="total_expense" class="results">
-            <p class="form-label"><b>The 50% rule is:</b></p>
-            <p *ngIf="buyProperty" class="subtitle green">You can buy this property.</p>
-            <p *ngIf="!buyProperty" class="subtitle red">You shouldn't buy this property as actual expense is greater than total expense.</p>
-          </div>
           <!-- step 7 calculation summary here -->
         </div>
         <div class="text-right">
           <button mat-raised-button color="primary" type="submit" (click)="calculateTotalExpense()">
             Calculate
           </button>
+        </div>
+        <div *ngIf="total_expense" class="results">
+          <p class="form-label"><b>The 50% rule is:</b></p>
+          <p *ngIf="buyProperty" class="subtitle green">You can buy this property.</p>
+          <p *ngIf="!buyProperty" class="subtitle red">You shouldn't buy this property as actual expense is greater than total expense.</p>
         </div>
       </div>
 
