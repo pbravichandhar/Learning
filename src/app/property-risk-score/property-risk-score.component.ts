@@ -9,15 +9,18 @@ export class PropertyRiskScoreComponent implements OnInit {
   square_feet_length: number;
   square_feet_width: number;
   square_footage: number;
+
   home_loan_amount: number;
   annual_IR: number;
   mortage_payment: number;
   loan_terms: number;
   interest_rate: number;
   loanTerms = ['5', '10', '15', '20', '30', '40', '50'];
+
   gross_yield_annual_income: number;
   gross_yield_purchase_price: number;
   gross_yield: number;
+
   dsr_gross_profit: number;
   dsr_maintenance_amount: number;
   dsr_interest_expense: number;
@@ -42,6 +45,10 @@ export class PropertyRiskScoreComponent implements OnInit {
   fees_paid: number;
   cash_on_cash: number;
 
+  arv_purchase_price: number;
+  arv_renovation_price: number;
+  after_repair_value: number;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -59,7 +66,7 @@ export class PropertyRiskScoreComponent implements OnInit {
     const calc3 = this.interest_rate * calc1;
     this.mortage_payment = +(+this.home_loan_amount * calc3/(calc2 - 1)).toFixed(2);
   }
-  
+
   calculateCapRate(): void {
     this.NOI = (+this.rental_income + +this.other_income) - (+this.vacancy_loss + +this.other_expense_loss);
     this.cap_rate = (this.NOI / this.present_market_value) * 100;
@@ -80,6 +87,10 @@ export class PropertyRiskScoreComponent implements OnInit {
 
   calculateDebtServiceRatio(): void {
     this.debt_service_ratio = (this.dsr_gross_profit - this.dsr_maintenance_amount) / this.dsr_interest_expense;
+  }
+
+  calculateAfterRepairValue(): void {
+    this.after_repair_value = (+this.arv_purchase_price +  +this.arv_renovation_price);
   }
 
 }
