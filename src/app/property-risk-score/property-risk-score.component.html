@@ -21,7 +21,7 @@
             <a [class.active] = "payment_calc_type === 'CashOnCash'" [ngClass]="{'complete': cash_on_cash}"(click)="paymentCalc('CashOnCash')">Cash-On-Cash Return</a>
 
             <!-- Step 7  -->
-            <a [class.active] = "payment_calc_type === 'fiftyRule'" [ngClass]="{'complete': isBuyProperty }"(click)="paymentCalc('fiftyRule')">The 50% Rule</a>
+            <a [class.active] = "payment_calc_type === 'fiftyRule'" [ngClass]="{'complete': total_expense }"(click)="paymentCalc('fiftyRule')">The 50% Rule</a>
 
             <!-- Step 8  -->
             <a [class.active] = "payment_calc_type === 'ARVRate'" [ngClass]="{'complete':  after_repair_value}" (click)="paymentCalc('ARVRate')">After Repair Value (ARV)</a>
@@ -31,7 +31,7 @@
 
             <!-- Step 10  -->
             <a [class.active] = "payment_calc_type === 'Square_footage'" [ngClass]="{'complete': square_footage}" (click)="paymentCalc('Square_footage')">Square Footage</a>
-        </div>
+    </div>
   </div>
   <div class="flex-1 dashboard">
     <div class="header-panel">
@@ -360,11 +360,10 @@
               </mat-error>
             </mat-form-field>
           </div>
-          <div *ngIf="total_expense" class="col-md-12">
-            <label class="form-label"><b>The 50% rule is:</b></label>
-            <p>{{propertyResult}}</p>
-            <!-- <p *ngIf="buyProperty">You can buy this property.</p>
-            <p *ngIf="!buyProperty">You shouldn't buy this property as actual expense is greater than total expense.</p> -->
+          <div *ngIf="total_expense" class="results">
+            <p class="form-label"><b>The 50% rule is:</b></p>
+            <p *ngIf="buyProperty" class="subtitle green">You can buy this property.</p>
+            <p *ngIf="!buyProperty" class="subtitle red">You shouldn't buy this property as actual expense is greater than total expense.</p>
           </div>
           <!-- step 7 calculation summary here -->
         </div>
@@ -372,11 +371,6 @@
           <button mat-raised-button color="primary" type="submit" (click)="calculateTotalExpense()">
             Calculate
           </button>
-        </div>
-        <div *ngIf="total_expense" class="results">
-          <p class="form-label"><b>The 50% rule is:</b></p>
-          <p *ngIf="buyProperty" class="subtitle green">You can buy this property.</p>
-          <p *ngIf="!buyProperty" class="subtitle red">You shouldn't buy this property as actual expense is greater than total expense.</p>
         </div>
       </div>
 
@@ -486,17 +480,21 @@
         </div>
       </div>
 
-      <!-- Results of all steps: -->
-      <div *ngIf="!allStepsCompleted()">
-        <p>Mortage Payment: {{mortage_payment}}</p>
-        <p>Capitalization Rate: {{cap_rate}}</p>
-        <p>Rent Cost Ratio: {{rent_cost_ratio}}</p>
-        <p>Gross Yield: {{gross_yield}}</p>
-        <p>Debt Service Ratio: {{debt_service_ratio}}</p>
-        <p>Cash-On-Cash Return: {{cash_on_cash}}</p>
-        <p>The 50% Rule: {{propertyResult}}</p>
-        <p>After Repair Value: {{after_repair_value}}</p>
-        <p>70% of ARV Rule: {{arv_percent_value | number}}</p>
-        <p>Square Footage: {{square_footage}}</p>
-      </div>
     </div>
+
+    <!-- Results of all steps: -->
+    <div *ngIf="!allStepsCompleted()">
+      <p>Mortage Payment: {{mortage_payment}}</p>
+      <p>Capitalization Rate: {{cap_rate}}</p>
+      <p>Rent Cost Ratio: {{rent_cost_ratio}}</p>
+      <p>Gross Yield: {{gross_yield}}</p>
+      <p>Debt Service Ratio: {{debt_service_ratio}}</p>
+      <p>Cash-On-Cash Return: {{cash_on_cash}}</p>
+      <p>The 50% Rule: {{propertyResult}}</p>
+      <p>After Repair Value: {{after_repair_value}}</p>
+      <p>70% of ARV Rule: {{arv_percent_value | number}}</p>
+      <p>Square Footage: {{square_footage}}</p>
+    </div>
+
+  </div>
+</div>

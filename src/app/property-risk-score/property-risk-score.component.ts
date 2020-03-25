@@ -53,7 +53,7 @@ export class PropertyRiskScoreComponent implements OnInit {
   tax: number;
   insurance: number;
   maintenance: number;
-  // buyProperty: boolean;
+  buyProperty: boolean;
 
   property_total_price: number;
   annual_rent_of_property: number;
@@ -109,9 +109,10 @@ export class PropertyRiskScoreComponent implements OnInit {
   calculateTotalExpense(): void {
     this.actual_expense  = (+this.property_management + +this.tax + +this.insurance + +this.maintenance);
     this.total_expense = +(this.total_income * (50/100));
-    this.propertyResult = (this.actual_expense > this.total_expense) ? 
-      "You shouldn't buy this property as actual expense is greater than total expense." :
-      "You can buy this property.";
+    this.buyProperty = (this.actual_expense > this.total_expense);
+    this.propertyResult = this.buyProperty === true ? 
+      "You can buy this property." :
+      "You shouldn't buy this property as actual expense is greater than total expense.";
   }
 
   calculateRentCostRatio(): void {
@@ -127,15 +128,15 @@ export class PropertyRiskScoreComponent implements OnInit {
   }
 
   allStepsCompleted(): boolean {
-    return (_.isEmpty(this.mortage_payment) 
-    || _.isEmpty(this.cap_rate)
-    || _.isEmpty(this.rent_cost_ratio)
-    || _.isEmpty(this.gross_yield)
-    || _.isEmpty(this.debt_service_ratio)
-    || _.isEmpty(this.cash_on_cash)
-    || _.isEmpty(this.propertyResult)
-    || _.isEmpty(this.after_repair_value)
-    || _.isEmpty(this.arv_percent_value)
-    || _.isEmpty(this.square_footage))
+    return (!_.isNumber(this.mortage_payment)
+    || !_.isNumber(this.cap_rate)
+    || !_.isNumber(this.rent_cost_ratio)
+    || !_.isNumber(this.gross_yield)
+    || !_.isNumber(this.debt_service_ratio)
+    || !_.isNumber(this.cash_on_cash)
+    || !_.isNumber(this.total_expense)
+    || !_.isNumber(this.after_repair_value)
+    || !_.isNumber(this.arv_percent_value)
+    || !_.isNumber(this.square_footage))
   }
 }
