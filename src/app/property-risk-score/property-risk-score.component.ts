@@ -9,14 +9,22 @@ export class PropertyRiskScoreComponent implements OnInit {
   square_feet_length: number;
   square_feet_width: number;
   square_footage: number;
+
+  home_loan_amount: number;
+  annual_IR: number;
+  mortage_payment: number;
+  loan_terms: number;
+  interest_rate: number;
+  loanTerms = ['5', '10', '15', '20', '30', '40', '50'];
+
   gross_yield_annual_income: number;
   gross_yield_purchase_price: number;
   gross_yield: number;
+
   dsr_gross_profit: number;
   dsr_maintenance_amount: number;
   dsr_interest_expense: number;
   debt_service_ratio: number;
-
   rental_income: number;
   other_income: number;
   vacancy_loss: number;
@@ -40,6 +48,10 @@ export class PropertyRiskScoreComponent implements OnInit {
   property_total_price: number;
   annual_rent_of_property: number;
   rent_cost_ratio: number;
+  
+  arv_purchase_price: number;
+  arv_renovation_price: number;
+  after_repair_value: number;
 
   constructor() { }
 
@@ -48,6 +60,15 @@ export class PropertyRiskScoreComponent implements OnInit {
 
   calculateSquareFootage(): void {
     this.square_footage = this.square_feet_length * this.square_feet_width;
+  }
+
+  calculateMortagePayment(): void {
+    const term = +(this.loan_terms * 12);
+    this.interest_rate = +((this.annual_IR/100)/12);
+    const calc1 = Math.pow(1 + this.interest_rate, term);
+    const calc2 = Math.pow(1 + this.interest_rate, term);
+    const calc3 = this.interest_rate * calc1;
+    this.mortage_payment = +(+this.home_loan_amount * calc3/(calc2 - 1)).toFixed(2);
   }
 
   calculateCapRate(): void {
@@ -74,7 +95,10 @@ export class PropertyRiskScoreComponent implements OnInit {
 
   calculateRentCostRatio(): void {
     this.rent_cost_ratio = +(this.property_total_price / this.annual_rent_of_property).toFixed(2);
+  }
 
+  calculateAfterRepairValue(): void {
+    this.after_repair_value = (+this.arv_purchase_price +  +this.arv_renovation_price);
   }
 
 }
