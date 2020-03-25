@@ -58,6 +58,8 @@ export class PropertyRiskScoreComponent implements OnInit {
 
   calculateCashOnCashRate(): void {
     this.cash_on_cash = (this.annual_rent - this.mortgage_payment) / (+this.down_payment + +this.fees_paid) * 100;
+  }
+
   calculateGrossYield(): void {
     this.gross_yield = (this.gross_yield_annual_income / this.gross_yield_purchase_price) * 100;
   }
