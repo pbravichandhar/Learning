@@ -61,6 +61,7 @@ export class PropertyRiskScoreComponent implements OnInit {
   arv_purchase_price: number;
   arv_renovation_price: number;
   after_repair_value: number;
+  isBuyProperty = false;
 
   payment_calc_type = 'Mortage';
   constructor() { }
@@ -107,6 +108,7 @@ export class PropertyRiskScoreComponent implements OnInit {
     this.actual_expense  = (+this.property_management + +this.tax + +this.insurance + +this.maintenance);
     this.total_expense = +(this.total_income * (50/100));
     this.buyProperty = (this.actual_expense > this.total_expense) ? false : true;
+    this.isBuyProperty = true;
   }
 
   calculateRentCostRatio(): void {
