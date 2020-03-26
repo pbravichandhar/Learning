@@ -100,7 +100,7 @@
           </button>
         </div>
         <div *ngIf="mortage_payment" class="results">
-          <p class="subtitle">Mortage payment is : <b>${{ mortage_payment }}</b></p>
+          <p class="subtitle">Mortage payment is : <b>$ {{ mortage_payment | number }}</b></p>
         </div>
       </div>
 
@@ -111,6 +111,7 @@
           <div class="col-md-6">
             <label>Rental Income</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="rent" placeholder="Enter Rental Income" pattern="^[0-9.]*$"
                 [(ngModel)]="rental_income" #rent="ngModel">
               <mat-error *ngIf="rent.hasError('pattern')">RentalIncome should only contain numeric values!</mat-error>
@@ -119,6 +120,7 @@
           <div class="col-md-6">
             <label>Other Income</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="income" placeholder="Enter Other Income" pattern="^[0-9.]*$"
                 [(ngModel)]="other_income" #income="ngModel">
               <mat-error *ngIf="income.hasError('pattern')">OtherIncome should only contain numeric values!</mat-error>
@@ -127,6 +129,7 @@
           <div class="col-md-6">
             <label>Vacancy Loss</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="vacancy" placeholder="Enter Vacancy Loss" pattern="^[0-9.]*$"
                 [(ngModel)]="vacancy_loss" #vacancy="ngModel">
               <mat-error *ngIf="vacancy.hasError('pattern')">VacancyLoss should only contain numeric values!</mat-error>
@@ -135,6 +138,7 @@
           <div class="col-md-6">
             <label>Other ExpenseLoss</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="expense" placeholder="Enter Expense Loss (including maintainence, tax etc...)"
                 pattern="^[0-9.]*$" [(ngModel)]="other_expense_loss" #expense="ngModel">
               <mat-error *ngIf="expense.hasError('pattern')">ExpenseLoss should only contain numeric values!</mat-error>
@@ -143,6 +147,7 @@
           <div class="col-md-6">
             <label>Present Market Value of Property</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="marketrate" placeholder="Enter Present Market Value" pattern="^[0-9.]*$"
                 [(ngModel)]="present_market_value" #marketrate="ngModel">
               <mat-error *ngIf="marketrate.hasError('pattern')">Market value should only contain numeric values!
@@ -156,7 +161,7 @@
           </button>
         </div>
         <div *ngIf="cap_rate" class="results">
-          <p class="subtitle">Capitalization rate is : <b>{{ cap_rate }}%</b></p>
+          <p class="subtitle">Capitalization rate is : <b>{{ cap_rate }} %</b></p>
         </div>
       </div>
 
@@ -167,6 +172,7 @@
           <div class="col-md-6">
             <label>Price of the Property</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="homeprice" placeholder="Enter the price of property" pattern="^[0-9.]*$"
                 [(ngModel)]="property_total_price" #homeprice="ngModel">
               <mat-error *ngIf="homeprice.hasError('pattern')">Price of the property should only contain numeric values!
@@ -176,6 +182,7 @@
           <div class="col-md-6">
             <label>Annual Rent of the Property</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="annualcost" placeholder="Enter purchase price" pattern="^[0-9.]*$"
                 [(ngModel)]="annual_rent_of_property" #annualcost="ngModel">
               <mat-error *ngIf="annualcost.hasError('pattern')">Annual Rent of the property should only contain numeric
@@ -189,7 +196,7 @@
           </button>
         </div>
         <div *ngIf="rent_cost_ratio" class="results">
-          <p class="subtitle">Rent cost ratio is : <b>{{ rent_cost_ratio }}%</b></p>
+          <p class="subtitle">Rent cost ratio is : <b>{{ rent_cost_ratio }} %</b></p>
         </div>
       </div>
 
@@ -200,6 +207,7 @@
           <div class="col-md-6">
             <label>Annual income</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="annualIncome" placeholder="Enter annual income" pattern="^[0-9.]*$"
                 [(ngModel)]="gross_yield_annual_income" #annualIncome="ngModel">
               <mat-error *ngIf="annualIncome.hasError('pattern')">Annual income should only contain numeric values!
@@ -209,6 +217,7 @@
           <div class="col-md-6">
             <label>Purchased price</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="purchasePrice" placeholder="Enter purchased price" pattern="^[0-9.]*$"
                 [(ngModel)]="gross_yield_purchase_price" #purchasePrice="ngModel">
               <mat-error *ngIf="purchasePrice.hasError('pattern')">Purchase price should only contain numeric values!
@@ -222,7 +231,7 @@
           </button>
         </div>
         <div *ngIf="gross_yield" class="results">
-          <p class="subtitle">Gross yield is : <b>{{ gross_yield }}%</b></p>
+          <p class="subtitle">Gross yield is : <b>{{ gross_yield }} %</b></p>
         </div>
       </div>
 
@@ -233,6 +242,7 @@
           <div class="col-md-6">
             <label>Gross profit</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="grossProfit" placeholder="Enter gross profit" pattern="^[0-9.]*$"
                 [(ngModel)]="dsr_gross_profit" #grossProfit="ngModel">
               <mat-error *ngIf="grossProfit.hasError('pattern')">Gross profit should only contain numeric values!
@@ -242,6 +252,7 @@
           <div class="col-md-6">
             <label>Maintenance amount</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="maintenanceAmount" placeholder="Enter maintenance amount" pattern="^[0-9.]*$"
                 [(ngModel)]="dsr_maintenance_amount" #maintenanceAmount="ngModel">
               <mat-error *ngIf="maintenanceAmount.hasError('pattern')">Maintenance amount should only contain numeric
@@ -251,6 +262,7 @@
           <div class="col-md-6">
             <label>Interest expense</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="interestExpense" placeholder="Enter interest expense" pattern="^[0-9.]*$"
                 [(ngModel)]="dsr_interest_expense" #interestExpense="ngModel">
               <mat-error *ngIf="interestExpense.hasError('pattern')">Interest expense should only contain numeric
@@ -275,6 +287,7 @@
           <div class="col-md-6">
             <label>Annual Rent</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="rent" placeholder="Enter Annual Rent" pattern="^[0-9.]*$" [(ngModel)]="annual_rent"
                 #rent="ngModel">
               <mat-error *ngIf="rent.hasError('pattern')">Annual Rent should only contain numeric values!</mat-error>
@@ -283,6 +296,7 @@
           <div class="col-md-6">
             <label>Mortgage Payment</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="payment" placeholder="Enter Mortgage Payment" pattern="^[0-9.]*$"
                 [(ngModel)]="mortgage_payment" #payment="ngModel">
               <mat-error *ngIf="payment.hasError('pattern')">Mortgage Payment should only contain numeric values!
@@ -292,6 +306,7 @@
           <div class="col-md-6">
             <label>Down Payment</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="downpayment" placeholder="Enter Down Payment" pattern="^[0-9.]*$"
                 [(ngModel)]="down_payment" #downpayment="ngModel">
               <mat-error *ngIf="downpayment.hasError('pattern')">Down Payment should only contain numeric values!
@@ -301,6 +316,7 @@
           <div class="col-md-6">
             <label>Fees Paid</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="feespaid" placeholder="Enter Fees Paid" pattern="^[0-9.]*$" [(ngModel)]="fees_paid"
                 #feespaid="ngModel">
               <mat-error *ngIf="feespaid.hasError('pattern')">Fees Paid should only contain numeric values!</mat-error>
@@ -313,7 +329,7 @@
           </button>
         </div>
         <div *ngIf="cash_on_cash" class="results">
-          <p class="subtitle">Cash-On-Cash is : <b>{{ cash_on_cash | number}}%</b></p>
+          <p class="subtitle">Cash-On-Cash is : <b>{{ cash_on_cash | number}} %</b></p>
         </div>
       </div>
 
@@ -391,6 +407,7 @@
           <div class="col-md-6">
             <label>Purchased Price</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="arvPurchasePrice" placeholder="Enter purchased price" pattern="^[0-9.]*$"
                 [(ngModel)]="arv_purchase_price" #arvPurchasePrice="ngModel">
               <mat-error *ngIf="arvPurchasePrice.hasError('pattern')">Purchased Price should only contain numeric
@@ -400,6 +417,7 @@
           <div class="col-md-6">
             <label>Renovation Price</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="arvRenovationPrice" placeholder="Enter renovation price" pattern="^[0-9.]*$"
                 [(ngModel)]="arv_renovation_price" #arvRenovationPrice="ngModel">
               <mat-error *ngIf="arvRenovationPrice.hasError('pattern')">Renovation Price should only contain numeric
@@ -413,7 +431,7 @@
           </button>
         </div>
         <div *ngIf="after_repair_value" class="results">
-          <p class="subtitle">After repair value (ARV) is : <b>{{ after_repair_value }}</b></p>
+          <p class="subtitle">After repair value (ARV) is : <b>$ {{ after_repair_value | number }}</b></p>
         </div>
       </div>
 
@@ -458,7 +476,7 @@
           </button>
         </div>
         <div *ngIf="arv_percent_value" class="results">
-          <p class="subtitle">70% of ARV rule rate is : <b>${{ arv_percent_value | number}}</b></p>
+          <p class="subtitle">70% of ARV rule rate is : <b>$ {{ arv_percent_value | number}}</b></p>
         </div>
       </div>
 
@@ -489,7 +507,7 @@
           </button>
         </div>
         <div *ngIf="square_footage" class="results">
-          <p class="subtitle">Square footage is : <b>{{ square_footage }}</b></p>
+          <p class="subtitle">Square footage is : <b>{{ square_footage }} sq.ft.</b></p>
         </div>
       </div>
     </div>
