@@ -89,7 +89,7 @@
           </button>
         </div>
         <div *ngIf="mortage_payment" class="results">
-          <p class="subtitle">Mortage payment is : <b>${{ mortage_payment }}</b></p>
+          <p class="subtitle">Mortage payment is : <b>$ {{ mortage_payment }}</b></p>
         </div>
       </div>
 
@@ -221,7 +221,7 @@
           </button>
         </div>
         <div *ngIf="gross_yield" class="results">
-          <p class="subtitle">Gross yield is : <b>{{ gross_yield }}%</b></p>
+          <p class="subtitle">Gross yield is : <b>{{ gross_yield }} %</b></p>
         </div>
       </div>
 
@@ -498,20 +498,19 @@
       </div>
 
     </div>
-
-    <!-- Results of all steps: -->
-    <div *ngIf="!allStepsCompleted()">
-      <p>Mortage Payment: {{mortage_payment}}</p>
-      <p>Capitalization Rate: {{cap_rate}}</p>
-      <p>Rent Cost Ratio: {{rent_cost_ratio}}</p>
-      <p>Gross Yield: {{gross_yield}} %</p>
-      <p>Debt Service Ratio: {{debt_service_ratio}}</p>
-      <p>Cash-On-Cash Return: {{cash_on_cash}}</p>
-      <p>The 50% Rule: {{propertyResult}}</p>
-      <p>After Repair Value: {{after_repair_value}}</p>
-      <p>70% of ARV Rule: {{arv_percent_value | number}}</p>
-      <p>Square Footage: {{square_footage}}</p>
-    </div>
-
   </div>
+</div>
+
+<!-- Results of all steps: -->
+<div *ngIf="!allStepsCompleted()">
+  <p>Mortage Payment: $ {{mortage_payment}}</p>
+  <p>Capitalization Rate: {{cap_rate}} %</p>
+  <p>Rent Cost Ratio: {{rent_cost_ratio}} %</p>
+  <p>Gross Yield: {{gross_yield}} %</p>
+  <p>Debt Service Ratio: {{debt_service_ratio}}</p>
+  <p>Cash-On-Cash Return: {{cash_on_cash}} %</p>
+  <p>The 50% Rule: {{propertyResult}}</p>
+  <p>After Repair Value: $ {{after_repair_value}}</p>
+  <p>70% of ARV Rule: $ {{arv_percent_value | number}}</p>
+  <p>Square Footage: {{square_footage}} sq.ft.</p>
 </div>
