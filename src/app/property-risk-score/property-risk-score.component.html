@@ -89,7 +89,7 @@
           </button>
         </div>
         <div *ngIf="mortage_payment" class="results">
-          <p class="subtitle">Mortage payment is : <b>${{ mortage_payment }}</b></p>
+          <p class="subtitle">Mortage payment is : <b>$ {{ mortage_payment | number }}</b></p>
         </div>
       </div>
 
@@ -221,7 +221,7 @@
           </button>
         </div>
         <div *ngIf="gross_yield" class="results">
-          <p class="subtitle">Gross yield is : <b>{{ gross_yield }}%</b></p>
+          <p class="subtitle">Gross yield is : <b>{{ gross_yield }} %</b></p>
         </div>
       </div>
 
@@ -420,7 +420,7 @@
           </button>
         </div>
         <div *ngIf="after_repair_value" class="results">
-          <p class="subtitle">After repair value (ARV) is : <b>$ {{ after_repair_value }}</b></p>
+          <p class="subtitle">After repair value (ARV) is : <b>$ {{ after_repair_value | number }}</b></p>
         </div>
       </div>
 
@@ -512,6 +512,5 @@
       <p>70% of ARV Rule: {{arv_percent_value | number}}</p>
       <p>Square Footage: {{square_footage}}</p>
     </div>
-
   </div>
 </div>
