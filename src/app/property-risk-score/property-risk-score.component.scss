@@ -90,3 +90,16 @@ b {
 .red {
   color: #d0021b;
 }
+
+.result-summary-container { 
+  max-height: calc(100vh - 72px);
+  overflow: auto;
+}
+
+.result-summary {
+  max-width: 800px;
+  background: #f7f8fc;
+  margin: 24px auto;
+  box-shadow: 0px 0px 8px 4px #cce2fb;
+  padding: 24px;
+}
