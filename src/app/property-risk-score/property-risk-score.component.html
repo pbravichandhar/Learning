@@ -21,7 +21,7 @@
             <a [class.active] = "payment_calc_type === 'CashOnCash'" [ngClass]="{'complete': cash_on_cash}"(click)="paymentCalc('CashOnCash')">Cash-On-Cash Return</a>
 
             <!-- Step 7  -->
-            <a [class.active] = "payment_calc_type === 'fiftyRule'" [ngClass]="{'complete': isBuyProperty }"(click)="paymentCalc('fiftyRule')">The 50% Rule</a>
+            <a [class.active] = "payment_calc_type === 'fiftyRule'" [ngClass]="{'complete': total_expense }"(click)="paymentCalc('fiftyRule')">The 50% Rule</a>
 
             <!-- Step 8  -->
             <a [class.active] = "payment_calc_type === 'ARVRate'" [ngClass]="{'complete':  after_repair_value}" (click)="paymentCalc('ARVRate')">After Repair Value (ARV)</a>
@@ -31,7 +31,7 @@
 
             <!-- Step 10  -->
             <a [class.active] = "payment_calc_type === 'Square_footage'" [ngClass]="{'complete': square_footage}" (click)="paymentCalc('Square_footage')">Square Footage</a>
-        </div>
+    </div>
   </div>
   <div class="flex-1 dashboard">
     <div class="header-panel">
@@ -197,6 +197,7 @@
           <div class="col-md-6">
             <label>Annual income</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="annualIncome" placeholder="Enter annual income" pattern="^[0-9.]*$"
                 [(ngModel)]="gross_yield_annual_income" #annualIncome="ngModel">
               <mat-error *ngIf="annualIncome.hasError('pattern')">Annual income should only contain numeric values!
@@ -206,6 +207,7 @@
           <div class="col-md-6">
             <label>Purchased price</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="purchasePrice" placeholder="Enter purchased price" pattern="^[0-9.]*$"
                 [(ngModel)]="gross_yield_purchase_price" #purchasePrice="ngModel">
               <mat-error *ngIf="purchasePrice.hasError('pattern')">Purchase price should only contain numeric values!
@@ -230,6 +232,7 @@
           <div class="col-md-6">
             <label>Gross profit</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="grossProfit" placeholder="Enter gross profit" pattern="^[0-9.]*$"
                 [(ngModel)]="dsr_gross_profit" #grossProfit="ngModel">
               <mat-error *ngIf="grossProfit.hasError('pattern')">Gross profit should only contain numeric values!
@@ -239,6 +242,7 @@
           <div class="col-md-6">
             <label>Maintenance amount</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="maintenanceAmount" placeholder="Enter maintenance amount" pattern="^[0-9.]*$"
                 [(ngModel)]="dsr_maintenance_amount" #maintenanceAmount="ngModel">
               <mat-error *ngIf="maintenanceAmount.hasError('pattern')">Maintenance amount should only contain numeric
@@ -248,6 +252,7 @@
           <div class="col-md-6">
             <label>Interest expense</label>
             <mat-form-field class="full-width" floatLabel="never">
+              <span matPrefix>$</span>
               <input matInput name="interestExpense" placeholder="Enter interest expense" pattern="^[0-9.]*$"
                 [(ngModel)]="dsr_interest_expense" #interestExpense="ngModel">
               <mat-error *ngIf="interestExpense.hasError('pattern')">Interest expense should only contain numeric
@@ -491,4 +496,22 @@
           <p class="subtitle">Square footage is : <b>{{ square_footage }} sq.ft.</b></p>
         </div>
       </div>
+
     </div>
+
+    <!-- Results of all steps: -->
+    <div *ngIf="!allStepsCompleted()">
+      <p>Mortage Payment: {{mortage_payment}}</p>
+      <p>Capitalization Rate: {{cap_rate}}</p>
+      <p>Rent Cost Ratio: {{rent_cost_ratio}}</p>
+      <p>Gross Yield: {{gross_yield}} %</p>
+      <p>Debt Service Ratio: {{debt_service_ratio}}</p>
+      <p>Cash-On-Cash Return: {{cash_on_cash}}</p>
+      <p>The 50% Rule: {{propertyResult}}</p>
+      <p>After Repair Value: {{after_repair_value}}</p>
+      <p>70% of ARV Rule: {{arv_percent_value | number}}</p>
+      <p>Square Footage: {{square_footage}}</p>
+    </div>
+
+  </div>
+</div>

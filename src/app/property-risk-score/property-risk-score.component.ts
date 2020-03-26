@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-property-risk-score',
@@ -64,6 +65,7 @@ export class PropertyRiskScoreComponent implements OnInit {
   isBuyProperty = false;
 
   payment_calc_type = 'Mortage';
+  propertyResult: string;
   constructor() { }
 
   ngOnInit(): void {
@@ -107,8 +109,10 @@ export class PropertyRiskScoreComponent implements OnInit {
   calculateTotalExpense(): void {
     this.actual_expense  = (+this.property_management + +this.tax + +this.insurance + +this.maintenance);
     this.total_expense = +(this.total_income * (50/100));
-    this.buyProperty = (this.actual_expense > this.total_expense) ? false : true;
-    this.isBuyProperty = true;
+    this.buyProperty = (this.actual_expense > this.total_expense);
+    this.propertyResult = this.buyProperty === true ? 
+      "You can buy this property." :
+      "You shouldn't buy this property as actual expense is greater than total expense.";
   }
 
   calculateRentCostRatio(): void {
@@ -121,5 +125,18 @@ export class PropertyRiskScoreComponent implements OnInit {
 
   paymentCalc(value) {
     this.payment_calc_type = value;
+  }
+
+  allStepsCompleted(): boolean {
+    return (!_.isNumber(this.mortage_payment)
+    || !_.isNumber(this.cap_rate)
+    || !_.isNumber(this.rent_cost_ratio)
+    || !_.isNumber(this.gross_yield)
+    || !_.isNumber(this.debt_service_ratio)
+    || !_.isNumber(this.cash_on_cash)
+    || !_.isNumber(this.total_expense)
+    || !_.isNumber(this.after_repair_value)
+    || !_.isNumber(this.arv_percent_value)
+    || !_.isNumber(this.square_footage))
   }
 }
