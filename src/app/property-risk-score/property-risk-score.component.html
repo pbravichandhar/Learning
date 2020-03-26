@@ -50,7 +50,7 @@
       <h2 class="heading text-center">Property Risk Calculation</h2>
     </div>
 
-    <div class="dashboard-content p-5" [ngSwitch]="payment_calc_type">
+    <div class="dashboard-content p-5" [ngSwitch]="payment_calc_type" *ngIf="allStepsCompleted()">
 
       <!-- Step 1 Calculation  -->
       <div class="calculation" *ngSwitchCase="'Mortage'">
@@ -523,16 +523,16 @@
         <h4 class="heading mt-3 text-center">Thanks for participate with us!</h4>
         <h3 class="heading mt-3 text-center">Your end results summary here about <br /> <span class="green">Property
             Risk!</span></h3>
-        <p class="subtitle mb-2">Mortage Payment : <b>{{mortage_payment}}</b></p>
-        <p class="subtitle mb-2">Capitalization Rate : <b>{{cap_rate}}</b></p>
-        <p class="subtitle mb-2">Rent Cost Ratio : <b>{{rent_cost_ratio}}</b></p>
-        <p class="subtitle mb-2">Gross Yield : <b>{{gross_yield}}</b></p>
+        <p class="subtitle mb-2">Mortage Payment : <b>$ {{mortage_payment}}</b></p>
+        <p class="subtitle mb-2">Capitalization Rate : <b>{{cap_rate}} %</b></p>
+        <p class="subtitle mb-2">Rent Cost Ratio : <b>{{rent_cost_ratio}} %</b></p>
+        <p class="subtitle mb-2">Gross Yield : <b>{{gross_yield}} %</b></p>
         <p class="subtitle mb-2">Debt Service Ratio : <b>{{debt_service_ratio}}</b></p>
-        <p class="subtitle mb-2">Cash-On-Cash Return : <b>{{cash_on_cash}}</b></p>
+        <p class="subtitle mb-2">Cash-On-Cash Return : <b>{{cash_on_cash}} %</b></p>
         <p class="subtitle mb-2">The 50% Rule : <b>{{propertyResult}}</b></p>
-        <p class="subtitle mb-2">After Repair Value : <b>{{after_repair_value}}</b></p>
-        <p class="subtitle mb-2">70% of ARV Rule : <b>{{arv_percent_value | number}}</b></p>
-        <p class="subtitle mb-2">Square Footage : <b>{{square_footage}}</b></p>
+        <p class="subtitle mb-2">After Repair Value : <b>$ {{after_repair_value}}</b></p>
+        <p class="subtitle mb-2">70% of ARV Rule : <b>$ {{arv_percent_value | number}}</b></p>
+        <p class="subtitle mb-2">Square Footage : <b>{{square_footage}} sq.ft.</b></p>
       </div>
     </div>
   </div>
